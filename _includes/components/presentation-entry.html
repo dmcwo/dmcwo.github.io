@@ -1,0 +1,64 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">
+      {% if include.context == "cv" or include.context == "list" %}
+      <a href="{{ include.entry.url | relative_url }}">{{ include.entry.title }}</a>
+      {% else %}
+      {{ include.entry.title }}
+      {% endif %}
+    </{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      {% if include.entry.presenters and include.entry.presenters != "" %}<span>{{ include.entry.presenters }}</span>{% endif %}
+      <span>{{ include.entry.meeting_short_name | default: include.entry.meeting_name }}</span>
+      {% if include.entry.location and include.entry.location != "" %}<span class="cv-entry__location">{{ include.entry.location }}</span>{% endif %}
+      <span class="cv-entry__date">{{ include.entry.date | date: "%B %Y" }}</span>
+    </div>
+  </div>
+  {% if include.entry.abstract and include.context == "list" %}
+  <p class="cv-entry__body text-muted">{{ include.entry.abstract | truncatewords: 25 }}</p>
+  {% endif %}
+  {% assign has_slide = include.entry.slide_url | strip %}
+  {% assign has_handout = include.entry.handout_url | strip %}
+  {% assign has_recording = include.entry.recording_url | strip %}
+  {% assign has_meeting = include.entry.meeting_url | strip %}
+  {% if has_slide != "" or has_handout != "" or has_recording != "" or has_meeting != "" %}
+  <ul class="cv-actions" aria-label="Presentation resources">
+    {% if has_slide != "" %}
+    <li>
+      <a href="{{ include.entry.slide_url }}" class="cv-action-link">
+        {% include icon.html name="presentation" size="16" aria-hidden="true" %}
+        <span>Slides</span>
+        <span class="visually-hidden">from {{ include.entry.title }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if has_handout != "" %}
+    <li>
+      <a href="{{ include.entry.handout_url }}" class="cv-action-link">
+        {% include icon.html name="file-text" size="16" aria-hidden="true" %}
+        <span>Handout</span>
+        <span class="visually-hidden">from {{ include.entry.title }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if has_recording != "" %}
+    <li>
+      <a href="{{ include.entry.recording_url }}" class="cv-action-link">
+        {% include icon.html name="video" size="16" aria-hidden="true" %}
+        <span>Recording</span>
+        <span class="visually-hidden">from {{ include.entry.title }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if has_meeting != "" %}
+    <li>
+      <a href="{{ include.entry.meeting_url }}" class="cv-action-link">
+        {% include icon.html name="external-link" size="16" aria-hidden="true" %}
+        <span>Event Page</span>
+        <span class="visually-hidden">for {{ include.entry.title }}</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</article>

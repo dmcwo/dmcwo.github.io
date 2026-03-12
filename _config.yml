@@ -1,0 +1,101 @@
+# Site settings
+title: "Doug Worsham"
+description: "Designer and leader in higher education. CV, presentations, publications, and portfolio."
+url: "https://dmcwo.github.io"
+baseurl: "/dmcwo"
+author:
+  name: "Doug Worsham"
+  bio: "I'm a team builder with 15+ years experience transforming educational organizations through participatory, user-centered design."
+  linkedin: "https://www.linkedin.com/in/doug-worsham"
+  github: "https://github.com/dmcwo"
+  orcid: "https://orcid.org/0000-0002-4945-5773"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Collections
+collections:
+  experience:
+    output: false
+    sort_by: sort_date
+  education:
+    output: false
+    sort_by: sort_date
+  publications:
+    output: false
+    sort_by: sort_date
+  presentations:
+    output: true
+    permalink: /presentations/:path/
+    sort_by: sort_date
+  awards:
+    output: false
+    sort_by: sort_date
+  grants:
+    output: false
+    sort_by: sort_date
+  teaching:
+    output: false
+    sort_by: sort_date
+  service:
+    output: false
+    sort_by: sort_date
+  projects:
+    output: true
+    permalink: /projects/:path/
+    sort_by: sort_date
+  notes:
+    output: true
+    permalink: /notes/:path/
+    sort_by: sort_date
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: publication
+  - scope:
+      path: ""
+      type: "presentations"
+    values:
+      layout: presentation
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      permalink: "/blog/:title/"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: project
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: note
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - _config_dev.yml
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache

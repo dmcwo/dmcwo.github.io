@@ -1,0 +1,34 @@
+<section id="teaching" class="cv-section">
+  <h2 class="cv-section__heading">Teaching & Instructional Design</h2>
+  {% assign teaching = site.teaching | where_exp: "item", "item.published != false" | sort: "sort_date" | reverse %}
+  {% assign courses = teaching | where: "category", "course" %}
+  {% assign resources = teaching | where: "category", "resource" %}
+  {% assign websites = teaching | where: "category", "website" %}
+
+  {% if courses.size > 0 %}
+  <div class="cv-category">
+    <h3 class="cv-category__heading">Courses Taught</h3>
+    {% for entry in courses %}
+    {% include components/teaching-entry.html entry=entry heading_level="h4" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if resources.size > 0 %}
+  <div class="cv-category">
+    <h3 class="cv-category__heading">Educational Resources</h3>
+    {% for entry in resources %}
+    {% include components/teaching-entry.html entry=entry heading_level="h4" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if websites.size > 0 %}
+  <div class="cv-category">
+    <h3 class="cv-category__heading">Educational Website Development</h3>
+    {% for entry in websites %}
+    {% include components/teaching-entry.html entry=entry heading_level="h4" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

@@ -1,0 +1,28 @@
+{% comment %}
+  Icon component using Lucide icons (inline SVG for theme support)
+
+  Usage:
+    {% include icon.html name="external-link" %}
+    {% include icon.html name="video" size="20" %}
+    {% include icon.html name="file-text" class="custom-class" %}
+    {% include icon.html name="presentation" aria-label="Slides" %}
+
+  Parameters:
+    - name (required): Icon filename without .svg extension
+    - size (optional): Width/height in pixels (default: 20)
+    - class (optional): Additional CSS classes
+    - aria-label (optional): Accessibility label
+    - aria-hidden (optional): Set to "true" to hide from screen readers (default: decorative icons)
+{% endcomment %}
+
+{%- assign icon_size = include.size | default: 20 -%}
+{%- assign icon_class = include.class | default: "" -%}
+{%- assign icon_hidden = include.aria-hidden | default: "true" -%}
+{%- assign icon_path = "assets/icons/" | append: include.name | append: ".svg" -%}
+
+<span class="icon icon--{{ include.name }} {{ icon_class }}"
+      {% if icon_hidden == "true" and include.aria-label == nil %}aria-hidden="true"{% endif %}
+      {% if include.aria-label %}role="img" aria-label="{{ include.aria-label }}"{% endif %}
+      style="width: {{ icon_size }}px; height: {{ icon_size }}px;">
+  {%- inline_svg {{ icon_path }} -%}
+</span>

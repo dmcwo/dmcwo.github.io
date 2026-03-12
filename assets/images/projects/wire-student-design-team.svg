@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#3a7d44"/>
+  <text font-family="Georgia, serif" fill="white" text-anchor="middle">
+    <tspan x="400" y="210" font-size="32" font-weight="bold" dy="0">WI+RE Student</tspan>
+    <tspan x="400" dy="1.3em" font-size="32" font-weight="bold">Design Team</tspan>
+  </text>
+  <text font-family="Georgia, serif" fill="white" fill-opacity="0.8" text-anchor="middle">
+    <tspan x="400" y="310" font-size="18">UCLA Library</tspan>
+  </text>
+</svg>

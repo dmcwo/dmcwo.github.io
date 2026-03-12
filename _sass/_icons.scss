@@ -1,0 +1,66 @@
+// Icon Component Styles
+// Icons from Lucide (https://lucide.dev/) - ISC License
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+  line-height: 1;
+
+  // Inherit color from parent context
+  color: inherit;
+
+  // Ensure icons don't get squished
+  min-width: 1em;
+  min-height: 1em;
+
+  // Style the SVG element inside
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    // Inherit stroke color from parent .icon element
+    // This allows theme colors to work via currentColor
+    stroke: currentColor;
+    fill: none;
+  }
+}
+
+// Icon in links
+a .icon {
+  // Smooth transition for color changes
+  transition: opacity 0.15s ease, color 0.15s ease;
+
+  svg {
+    transition: stroke 0.15s ease;
+  }
+}
+
+a:hover .icon {
+  opacity: 0.8;
+}
+
+// Icon spacing when used with text
+.icon + span,
+span + .icon {
+  margin-left: 0.35em;
+}
+
+// Utility classes for common icon sizes
+.icon--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon--md {
+  width: 20px;
+  height: 20px;
+}
+
+.icon--lg {
+  width: 24px;
+  height: 24px;
+}

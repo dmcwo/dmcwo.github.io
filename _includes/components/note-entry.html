@@ -1,0 +1,33 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">
+      {% if include.context == "cv" or include.context == "list" %}
+      <a href="{{ include.entry.url | relative_url }}">
+        {% if include.entry.icon %}{% include icon.html name=include.entry.icon size="20" %}{% endif %}
+        <span>{{ include.entry.title }}</span>
+      </a>
+      {% else %}
+      {% if include.entry.icon %}{% include icon.html name=include.entry.icon size="20" %}{% endif %}
+      <span>{{ include.entry.title }}</span>
+      {% endif %}
+    </{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      <span class="cv-entry__date">{{ include.entry.date | date: "%B %d, %Y" }}</span>
+      {% if include.entry.categories and include.entry.categories.size > 0 %}
+      <span>
+        {% include icon.html name="folder" size="14" %}
+        {{ include.entry.categories | join: ", " }}
+      </span>
+      {% endif %}
+      {% if include.entry.tags and include.entry.tags.size > 0 %}
+      <span>
+        {% include icon.html name="tag" size="14" %}
+        {{ include.entry.tags | join: ", " }}
+      </span>
+      {% endif %}
+    </div>
+  </div>
+  {% if include.entry.abstract and include.context == "list" %}
+  <p class="cv-entry__body text-muted">{{ include.entry.abstract | truncatewords: 40 }}</p>
+  {% endif %}
+</article>

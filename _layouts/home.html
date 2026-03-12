@@ -1,0 +1,90 @@
+---
+layout: default
+---
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title">{{ site.author.name }}</h1>
+    <p class="page-description">{{ site.author.bio }}</p>
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+<!-- let's hide the quick links for now -->
+<!--   <nav class="home-nav" aria-label="Quick links">
+    <div class="cluster" style="--cluster-gap: 0.75rem; margin-top: 2rem;">
+      <a href="{{ '/projects/' | relative_url }}" class="btn">Projects</a>
+      {% comment %}<a href="{{ '/about/' | relative_url }}" class="btn">About</a>{% endcomment %}
+      <a href="{{ '/presentations/' | relative_url }}" class="btn">Presentations</a>
+      <a href="{{ '/publications/' | relative_url }}" class="btn">Publications</a>
+      <a href="{{ '/Notes/' | relative_url }}" class="btn">Notes</a>
+    </div>
+  </nav> -->
+
+  {% assign featured_presentations = site.presentations | where: "featured", true | sort: "sort_date" | reverse %}
+  {% assign featured_publications = site.publications | where: "featured", true | sort: "sort_date" | reverse %}
+  {% assign featured_projects = site.projects | where: "featured", true | sort: "sort_date" | reverse %}
+
+  {% if featured_projects.size > 0 %}
+  <section class="section" aria-label="Featured projects">
+    <div style="margin-top: 3rem;">
+      <h2>Featured <a href="{{ '/projects/' | relative_url }}">Projects</a></h2>
+      <div class="project-tiles">
+        {% for project in featured_projects %}
+        <article class="project-tile">
+          <div class="project-tile__body">
+            <p class="project-tile__category">{{ project.category | replace: '-', ' ' }}</p>
+            <h3 class="project-tile__title">
+              <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+            </h3>
+            {% if project.subtitle %}
+            <p class="project-tile__subtitle">{{ project.subtitle }}</p>
+            {% endif %}
+            {% if project.institution %}
+            <p class="project-tile__institution">{{ project.institution }}</p>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if featured_presentations.size > 0 or featured_publications.size > 0 %}
+  <section class="section" aria-label="Featured work">
+    {% if featured_presentations.size > 0 %}
+    <div style="margin-top: 3rem;">
+      <h2>Featured <a href="{{ '/presentations/' | relative_url }}">Presentations</a></h2>
+      <ul class="flow" style="--flow-space: 0.75rem; margin-top: 1rem;">
+        {% for item in featured_presentations %}
+        <li>
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          <span class="text-muted text-small">
+            — {{ item.meeting_short_name | default: item.meeting_name }}, {{ item.date | date: "%Y" }}
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if featured_publications.size > 0 %}
+    <div style="margin-top: 3rem;">
+      <h2>Featured <a href="{{ '/publications/' | relative_url }}">Publications</a></h2>
+      <ul class="flow" style="--flow-space: 0.75rem; margin-top: 1rem;">
+        {% for item in featured_publications %}
+        <li>
+          <a href="{{ '/publications/' | relative_url }}">{{ item.title }}</a>
+          <span class="text-muted text-small">— {{ item.year }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+
+
+</div>

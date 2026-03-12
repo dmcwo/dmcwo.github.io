@@ -1,0 +1,49 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">
+      {{ include.entry.title }}
+    </{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      {% if include.entry.authors and include.entry.authors != "" %}<span>{{ include.entry.authors }}</span>{% endif %}
+      {% if include.entry.publication_name and include.entry.publication_name != "" %}
+      <span>{{ include.entry.publication_name }}{% if include.entry.volume and include.entry.volume != "" %}, {{ include.entry.volume }}{% endif %}{% if include.entry.issue and include.entry.issue != "" %}({{ include.entry.issue }}){% endif %}{% if include.entry.pages and include.entry.pages != "" %}, {{ include.entry.pages }}{% endif %}</span>
+      {% endif %}
+      <span class="cv-entry__date">{{ include.entry.year }}</span>
+    </div>
+  </div>
+  {% if include.entry.abstract and include.context != "cv" %}
+  <details class="abstract-details">
+    <summary class="abstract-summary">
+      Read abstract
+      <span class="abstract-icon" aria-hidden="true"></span>
+    </summary>
+    <div class="abstract-content">
+      <p class="cv-entry__body text-muted">{{ include.entry.abstract }}</p>
+    </div>
+  </details>
+  {% endif %}
+  {% assign has_doi = include.entry.doi | strip %}
+  {% assign has_external_url = include.entry.external_url | strip %}
+  {% if has_doi != "" or has_external_url != "" %}
+  <ul class="cv-actions" aria-label="Publication links">
+    {% if has_doi != "" %}
+    <li>
+      <a href="{{ include.entry.doi }}" class="cv-action-link">
+        {% include icon.html name="link" size="16" aria-hidden="true" %}
+        <span>DOI / Permalink</span>
+        <span class="visually-hidden">for {{ include.entry.title }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% if has_external_url != "" and has_external_url != has_doi %}
+    <li>
+      <a href="{{ include.entry.external_url }}" class="cv-action-link">
+        {% include icon.html name="link" size="16" aria-hidden="true" %}
+        <span>Publisher Link</span>
+        <span class="visually-hidden">for {{ include.entry.title }}</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %}
+</article>

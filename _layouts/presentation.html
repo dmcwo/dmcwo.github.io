@@ -1,0 +1,108 @@
+---
+layout: default
+---
+<div class="container container--narrow">
+  <article class="collection-detail">
+    <header class="collection-detail__header">
+      <h1 class="collection-detail__title">{{ page.title }}{% if page.subtitle %}: {{ page.subtitle }}{% endif %}</h1>
+      <div class="collection-detail__meta">
+        {% if page.presenters %}<p>{{ page.presenters }}</p>{% endif %}
+        <p>
+          {{ page.meeting_name }}{% if page.location %}, {{ page.location }}{% endif %}
+        </p>
+        <p class="cv-entry__date">{{ page.date | date: "%B %d, %Y" }}</p>
+      </div>
+
+      {% assign has_slide = page.slide_url | strip %}
+      {% assign has_handout = page.handout_url | strip %}
+      {% assign has_recording = page.recording_url | strip %}
+      {% assign has_meeting = page.meeting_url | strip %}
+      {% if has_slide != "" or has_handout != "" or has_recording != "" or has_meeting != "" %}
+      <ul class="cv-actions" style="margin-top: 1.5rem;" aria-label="Presentation resources">
+        {% if has_slide != "" %}
+        <li>
+          <a href="{{ page.slide_url }}" class="cv-action-link">
+            {% include icon.html name="presentation" size="18" aria-hidden="true" %}
+            <span>Slides</span>
+            <span class="visually-hidden">from {{ page.title }}</span>
+          </a>
+        </li>
+        {% endif %}
+        {% if has_handout != "" %}
+        <li>
+          <a href="{{ page.handout_url }}" class="cv-action-link">
+            {% include icon.html name="file-text" size="18" aria-hidden="true" %}
+            <span>Handout</span>
+            <span class="visually-hidden">from {{ page.title }}</span>
+          </a>
+        </li>
+        {% endif %}
+        {% if has_recording != "" %}
+        <li>
+          <a href="{{ page.recording_url }}" class="cv-action-link">
+            {% include icon.html name="video" size="18" aria-hidden="true" %}
+            <span>Recording</span>
+            <span class="visually-hidden">from {{ page.title }}</span>
+          </a>
+        </li>
+        {% endif %}
+        {% if has_meeting != "" %}
+        <li>
+          <a href="{{ page.meeting_url }}" class="cv-action-link">
+            {% include icon.html name="external-link" size="18" aria-hidden="true" %}
+            <span>Event Page</span>
+            <span class="visually-hidden">for {{ page.title }}</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+    </header>
+
+    {% assign has_banner = page.banner | strip %}
+    {% if has_banner != "" %}
+    <div class="collection-detail__feature-image">
+      <img src="{{ page.banner | relative_url }}" alt="{{ page.banner_alt | default: page.title }}" />
+    </div>
+    {% endif %}
+
+    {% if page.abstract %}
+    <div class="collection-detail__abstract">
+      <strong>Abstract:</strong> {{ page.abstract }}
+    </div>
+    {% endif %}
+
+    {% if content != "" %}
+    <div class="collection-detail__body prose">
+      {{ content }}
+    </div>
+    {% endif %}
+
+    {% assign sorted = site.presentations | sort: "sort_date" | reverse %}
+    {% assign current_index = nil %}
+    {% for item in sorted %}
+      {% if item.url == page.url %}
+        {% assign current_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if current_index %}
+    {% assign prev_index = current_index | minus: 1 %}
+    {% assign next_index = current_index | plus: 1 %}
+    <nav class="pager" aria-label="Previous and next presentations">
+      {% if prev_index >= 0 %}
+      <a href="{{ sorted[prev_index].url | relative_url }}" class="pager__link">
+        <span class="pager__label">&larr; Newer</span>
+        {{ sorted[prev_index].title }}
+      </a>
+      {% endif %}
+      {% if next_index < sorted.size %}
+      <a href="{{ sorted[next_index].url | relative_url }}" class="pager__link pager__link--next">
+        <span class="pager__label">Older &rarr;</span>
+        {{ sorted[next_index].title }}
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </article>
+</div>

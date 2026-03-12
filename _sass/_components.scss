@@ -1,0 +1,130 @@
+@use "variables" as *;
+// =============================================================================
+// Components
+// Reusable UI elements: links, buttons, tags
+// =============================================================================
+
+// Standard link styling
+// ---------------------------------------------------------------------------
+a {
+  color: var(--color-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-link-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// Button
+// ---------------------------------------------------------------------------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: $space-2 $space-4;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--color-accent);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+
+  &:hover {
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+  }
+}
+
+// Tag / pill
+// ---------------------------------------------------------------------------
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15em 0.6em;
+  border-radius: 3px;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+// External link indicator (appends arrow to external links)
+// ---------------------------------------------------------------------------
+a[href^="http"]:not([href*="dmcwo"]) {
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-left: 3px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+  }
+}
+
+// Prev/Next navigation (for collection detail pages)
+// ---------------------------------------------------------------------------
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-top: $space-8;
+  padding-top: $space-6;
+  border-top: 1px solid var(--color-border);
+}
+
+.pager__link {
+  text-decoration: none;
+  font-size: 0.9rem;
+  max-width: 45%;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.pager__label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: $space-1;
+}
+
+.pager__link--next {
+  text-align: right;
+  margin-left: auto;
+}

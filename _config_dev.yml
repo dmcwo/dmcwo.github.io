@@ -1,0 +1,11 @@
+# Local development overrides
+# Clears the baseurl so the site serves cleanly at http://localhost:4000/
+#
+# Usage:
+#   bundle exec jekyll serve --config _config.yml,_config_dev.yml
+#
+# The second config file is merged on top of the first, so only these
+# two keys are overridden — everything else comes from _config.yml.
+
+url: "http://localhost:4000"
+baseurl: ""

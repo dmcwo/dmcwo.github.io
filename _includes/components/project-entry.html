@@ -1,0 +1,37 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">
+      {% if include.context == "cv" or include.context == "list" %}
+      <a href="{{ include.entry.url | relative_url }}">{{ include.entry.title }}</a>
+      {% else %}
+      {{ include.entry.title }}
+      {% endif %}
+    </{{ include.heading_level | default: "h3" }}>
+    {% if include.entry.subtitle %}<p class="cv-entry__subtitle">{{ include.entry.subtitle }}</p>{% endif %}
+    <div class="cv-entry__meta">
+      {% if include.entry.institution and include.entry.institution != "" %}<span>{{ include.entry.institution }}</span>{% endif %}
+      {% if include.entry.start_date and include.entry.end_date %}
+        <span class="cv-entry__date">{{ include.entry.start_date | date: "%Y" }}–{{ include.entry.end_date | date: "%Y" }}</span>
+      {% elsif include.entry.start_date %}
+        <span class="cv-entry__date">{{ include.entry.start_date | date: "%Y" }}–present</span>
+      {% elsif include.entry.date %}
+        <span class="cv-entry__date">{{ include.entry.date | date: "%Y" }}</span>
+      {% endif %}
+    </div>
+  </div>
+  {% if include.entry.skill_themes and include.context == "list" %}
+  <p class="cv-entry__skill-themes"><span class="cv-entry__skill-themes-label">Core capabilities:</span> {{ include.entry.skill_themes | join: ", " }}</p>
+  {% endif %}
+  {% assign has_url = include.entry.project_url | strip %}
+  {% if has_url != "" %}
+  <ul class="cv-actions" aria-label="Project links">
+    <li>
+      <a href="{{ include.entry.project_url }}" class="cv-action-link">
+        {% include icon.html name="external-link" size="16" aria-hidden="true" %}
+        <span>View Project</span>
+        <span class="visually-hidden">: {{ include.entry.title }}</span>
+      </a>
+    </li>
+  </ul>
+  {% endif %}
+</article>

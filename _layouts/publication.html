@@ -1,0 +1,84 @@
+---
+layout: default
+---
+<div class="container container--narrow">
+  <article class="collection-detail">
+    <header class="collection-detail__header">
+      <h1 class="collection-detail__title">{{ page.title }}</h1>
+      <div class="collection-detail__meta">
+        {% if page.authors %}<p>{{ page.authors }}</p>{% endif %}
+        <p>
+          {% if page.publication_name %}{{ page.publication_name }}{% endif %}
+          {% if page.volume %}, Volume {{ page.volume }}{% endif %}
+          {% if page.issue %}({{ page.issue }}){% endif %}
+          {% if page.pages %}, pp. {{ page.pages }}{% endif %}
+          {% if page.year %}. {{ page.year }}{% endif %}
+        </p>
+      </div>
+
+      {% assign doi_link = page.doi | strip %}
+      {% assign external_url_link = page.external_url | strip %}
+      {% if doi_link != "" or external_url_link != "" %}
+      <ul class="cv-actions" style="margin-top: 1.5rem;" aria-label="Publication links">
+        {% if doi_link != "" %}
+        <li>
+          <a href="{{ page.doi }}" class="cv-action-link">
+            {% include icon.html name="link" size="18" aria-hidden="true" %}
+            <span>DOI / Permalink</span>
+            <span class="visually-hidden">for {{ page.title }}</span>
+          </a>
+        </li>
+        {% endif %}
+        {% if external_url_link != "" and external_url_link != doi_link %}
+        <li>
+          <a href="{{ page.external_url }}" class="cv-action-link">
+            {% include icon.html name="link" size="18" aria-hidden="true" %}
+            <span>Publisher Link</span>
+            <span class="visually-hidden">for {{ page.title }}</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+    </header>
+
+    {% if page.abstract %}
+    <div class="collection-detail__abstract">
+      <strong>Abstract:</strong> {{ page.abstract }}
+    </div>
+    {% endif %}
+
+    {% if content != "" %}
+    <div class="collection-detail__body prose">
+      {{ content }}
+    </div>
+    {% endif %}
+
+    {% assign sorted = site.publications | sort: "sort_date" | reverse %}
+    {% assign current_index = nil %}
+    {% for item in sorted %}
+      {% if item.url == page.url %}
+        {% assign current_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if current_index %}
+    {% assign prev_index = current_index | minus: 1 %}
+    {% assign next_index = current_index | plus: 1 %}
+    <nav class="pager" aria-label="Previous and next publications">
+      {% if prev_index >= 0 %}
+      <a href="{{ sorted[prev_index].url | relative_url }}" class="pager__link">
+        <span class="pager__label">&larr; Newer</span>
+        {{ sorted[prev_index].title }}
+      </a>
+      {% endif %}
+      {% if next_index < sorted.size %}
+      <a href="{{ sorted[next_index].url | relative_url }}" class="pager__link pager__link--next">
+        <span class="pager__label">Older &rarr;</span>
+        {{ sorted[next_index].title }}
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </article>
+</div>

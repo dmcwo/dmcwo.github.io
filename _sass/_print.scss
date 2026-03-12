@@ -1,0 +1,151 @@
+// =============================================================================
+// Print
+// Print-optimized styles for CV and content pages
+// =============================================================================
+
+@media print {
+  // Force light, high-contrast colours regardless of theme
+  :root {
+    --color-bg: #fff !important;
+    --color-bg-alt: #f5f5f5 !important;
+    --color-text: #000 !important;
+    --color-text-muted: #444 !important;
+    --color-accent: #333 !important;
+    --color-accent-dark: #000 !important;
+    --color-border: #ccc !important;
+    --color-link: #000 !important;
+    --color-link-hover: #000 !important;
+  }
+
+  // Reset page basics
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  // Hide non-content elements
+  .site-header,
+  .site-footer,
+  .theme-switcher,
+  .skip-link,
+  .pager,
+  .cv-toc,
+  .cv-actions {
+    display: none !important;
+  }
+
+  // Remove page wrapper flex (causes issues in print)
+  .page-wrapper {
+    display: block;
+  }
+
+  .page-main {
+    padding: 0;
+  }
+
+  // Links — show URLs for external links
+  .prose a[href^="http"]::after,
+  .cv-entry a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+    word-break: break-all;
+  }
+
+  // Remove external link icon in print
+  a[href^="http"]:not([href*="dmcwo"])::after {
+    background-image: none !important;
+    width: auto !important;
+    height: auto !important;
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  // Remove link underlines for cleaner print
+  a {
+    text-decoration: none !important;
+    color: #000 !important;
+  }
+
+  // CV section print optimization
+  .cv-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+
+    & + & {
+      margin-top: 1.5em;
+      padding-top: 1em;
+    }
+  }
+
+  .cv-section__heading {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .cv-entry {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .cv-org-group {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  // Tighten spacing for print
+  .cv-entry + .cv-entry {
+    margin-top: 0.75em;
+  }
+
+  .cv-org-group + .cv-org-group {
+    margin-top: 1.25em;
+  }
+
+  .cv-entry__highlights {
+    margin-top: 0.25em;
+
+    li + li {
+      margin-top: 0.15em;
+    }
+  }
+
+  // Container — full width for print
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  // Remove background colours
+  .cv-badge {
+    background-color: transparent;
+    border: 1px solid #666;
+    color: #333;
+  }
+
+  .cv-badge--funded {
+    background-color: transparent;
+    color: #333;
+  }
+
+  // Images
+  img {
+    max-width: 100% !important;
+  }
+
+  // Expandable abstracts — show all expanded for print
+  details {
+    all: revert;
+  }
+
+  .abstract-summary {
+    display: none;
+  }
+
+  .abstract-content {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 0.5em;
+  }
+}

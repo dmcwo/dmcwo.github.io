@@ -1,0 +1,23 @@
+<section id="experience" class="cv-section">
+  <h2 class="cv-section__heading">Professional Experience</h2>
+  {% assign experiences = site.experience | where_exp: "item", "item.published != false" | sort: "sort_date" | reverse %}
+  {% assign grouped_orgs = experiences | group_by: "organization" %}
+  {% for group in grouped_orgs %}
+  <div class="cv-org-group">
+    <h3 class="cv-org-group__heading">
+      {% if group.items[0].organization_url %}
+      <a href="{{ group.items[0].organization_url }}" class="cv-entry__org-link">{{ group.name }}</a>
+      {% else %}
+      {{ group.name }}
+      {% endif %}
+    </h3>
+    <div class="cv-org-group__entries">
+      {% assign sorted_items = group.items | sort: "sort_date" | reverse %}
+      {% for entry in sorted_items %}
+      {% assign heading_level = "h4" %}
+      {% include components/experience-entry.html entry=entry heading_level=heading_level %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>

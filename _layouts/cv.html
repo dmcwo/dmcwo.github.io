@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="page-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {%- comment -%}Filter each collection to published items only before size checks{%- endcomment -%}
+  {% assign pub_experience    = site.experience    | where_exp: "item", "item.published != false" %}
+  {% assign pub_education     = site.education     | where_exp: "item", "item.published != false" %}
+  {% assign pub_awards        = site.awards        | where_exp: "item", "item.published != false" %}
+  {% assign pub_publications  = site.publications  | where_exp: "item", "item.published != false" %}
+  {% assign pub_presentations = site.presentations | where_exp: "item", "item.published != false" %}
+  {% assign pub_teaching      = site.teaching      | where_exp: "item", "item.published != false" %}
+  {% assign pub_grants        = site.grants        | where_exp: "item", "item.published != false" %}
+  {% assign pub_service       = site.service       | where_exp: "item", "item.published != false" %}
+
+  <nav class="cv-toc" aria-label="CV sections">
+    <p class="cv-toc__title">Sections</p>
+    <ul class="cv-toc__list">
+      {% if pub_experience.size    > 0 %}<li><a href="#experience"    class="cv-toc__link">Experience</a></li>{% endif %}
+      {% if pub_education.size     > 0 %}<li><a href="#education"     class="cv-toc__link">Education</a></li>{% endif %}
+      {% if pub_awards.size        > 0 %}<li><a href="#awards"        class="cv-toc__link">Awards</a></li>{% endif %}
+      {% if pub_publications.size  > 0 %}<li><a href="#publications"  class="cv-toc__link">Publications</a></li>{% endif %}
+      {% if pub_presentations.size > 0 %}<li><a href="#presentations" class="cv-toc__link">Presentations</a></li>{% endif %}
+      {% if pub_teaching.size      > 0 %}<li><a href="#teaching"      class="cv-toc__link">Teaching</a></li>{% endif %}
+      {% if pub_grants.size        > 0 %}<li><a href="#grants"        class="cv-toc__link">Grants</a></li>{% endif %}
+      {% if pub_service.size       > 0 %}<li><a href="#service"       class="cv-toc__link">Service & Leadership</a></li>{% endif %}
+    </ul>
+  </nav>
+
+  <article>
+    {{ content }}
+
+    {% if pub_experience.size    > 0 %}{% include cv/experience.html    %}{% endif %}
+    {% if pub_education.size     > 0 %}{% include cv/education.html     %}{% endif %}
+    {% if pub_awards.size        > 0 %}{% include cv/awards.html        %}{% endif %}
+    {% if pub_publications.size  > 0 %}{% include cv/publications.html  %}{% endif %}
+    {% if pub_presentations.size > 0 %}{% include cv/presentations.html %}{% endif %}
+    {% if pub_teaching.size      > 0 %}{% include cv/teaching.html      %}{% endif %}
+    {% if pub_grants.size        > 0 %}{% include cv/grants.html        %}{% endif %}
+    {% if pub_service.size       > 0 %}{% include cv/service.html       %}{% endif %}
+  </article>
+</div>

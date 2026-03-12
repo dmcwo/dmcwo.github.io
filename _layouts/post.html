@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<div class="container container--narrow">
+  <article>
+    <header class="page-header">
+      <p class="text-muted text-small">{{ page.date | date: "%B %d, %Y" }}</p>
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.description %}
+      <p class="page-description">{{ page.description }}</p>
+      {% endif %}
+    </header>
+
+    <div class="prose">
+      {{ content }}
+    </div>
+  </article>
+
+  <nav class="pager" aria-label="Previous and next posts">
+    {% if page.previous %}
+    <a href="{{ page.previous.url | relative_url }}" class="pager__link">
+      <span class="pager__label">&larr; Previous</span>
+      {{ page.previous.title }}
+    </a>
+    {% endif %}
+    {% if page.next %}
+    <a href="{{ page.next.url | relative_url }}" class="pager__link pager__link--next">
+      <span class="pager__label">Next &rarr;</span>
+      {{ page.next.title }}
+    </a>
+    {% endif %}
+  </nav>
+</div>

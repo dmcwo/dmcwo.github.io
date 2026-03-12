@@ -1,0 +1,53 @@
+@use "variables" as *;
+// =============================================================================
+// Footer
+// Site footer with contact and social links
+// =============================================================================
+
+.site-footer {
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  padding: $space-6 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @media (min-width: $bp-md) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+// Social links
+// ---------------------------------------------------------------------------
+.social-links {
+  display: flex;
+  gap: $space-4;
+  list-style: none;
+  padding: 0;
+}
+
+.social-links__link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-link);
+  }
+
+  svg {
+    width: 1.25em;
+    height: 1.25em;
+    fill: currentColor;
+  }
+}

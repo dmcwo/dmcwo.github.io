@@ -1,0 +1,7 @@
+<section id="awards" class="cv-section">
+  <h2 class="cv-section__heading">Awards</h2>
+  {% assign awards = site.awards | where_exp: "item", "item.published != false" | sort: "sort_date" | reverse %}
+  {% for entry in awards %}
+  {% include components/award-entry.html entry=entry heading_level="h3" %}
+  {% endfor %}
+</section>

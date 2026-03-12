@@ -1,0 +1,133 @@
+---
+layout: default
+---
+{% assign has_featured = page.featured_image | strip %}
+{% assign byline_parts = "" | split: "" %}
+{% if page.institution %}{% assign byline_parts = byline_parts | push: page.institution %}{% endif %}
+{% if page.start_date and page.end_date %}
+  {% capture date_str %}{{ page.start_date | date: "%Y" }}–{{ page.end_date | date: "%Y" }}{% endcapture %}
+  {% assign byline_parts = byline_parts | push: date_str %}
+{% elsif page.start_date %}
+  {% capture date_str %}{{ page.start_date | date: "%Y" }}–present{% endcapture %}
+  {% assign byline_parts = byline_parts | push: date_str %}
+{% elsif page.date %}
+  {% capture date_str %}{{ page.date | date: "%B %Y" }}{% endcapture %}
+  {% assign byline_parts = byline_parts | push: date_str %}
+{% endif %}
+<div class="container container--narrow">
+  <article class="collection-detail">
+    <header class="collection-detail__header{% if has_featured == '' %} collection-detail__header--no-image{% endif %}">
+      <h1 class="collection-detail__title">{{ page.title }}</h1>
+      {% if has_featured != "" %}
+      {% if page.subtitle %}
+      <p class="collection-detail__subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+      {% if byline_parts.size > 0 %}
+      <p class="collection-detail__byline">{{ byline_parts | join: " · " }}</p>
+      {% endif %}
+      {% endif %}
+    </header>
+
+    {% if has_featured != "" %}
+    <div class="collection-detail__feature-image">
+      <img src="{{ page.featured_image | relative_url }}" alt="{{ page.featured_image_alt | default: page.title }}" />
+    </div>
+    {% else %}
+    <div class="collection-detail__hero">
+      {% if page.icon %}
+        {% assign hero_icon = page.icon %}
+      {% else %}
+        {% assign proj_config = site.data.collection-config["projects"] %}
+        {% for cat in proj_config.grouping.categories %}
+          {% if cat.name == page.category %}{% assign hero_icon = cat.icon %}{% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if hero_icon %}
+      <div class="collection-detail__hero-icon" aria-hidden="true">
+        {% include icon.html name=hero_icon size="192" %}
+      </div>
+      {% endif %}
+      {% if page.subtitle %}
+      <p class="collection-detail__hero-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+      {% if byline_parts.size > 0 %}
+      <div class="collection-detail__hero-provenance">
+        {% if page.institution %}<span class="collection-detail__hero-org">{{ page.institution }}</span>{% endif %}
+        {% if date_str %}<span class="collection-detail__hero-dates">{{ date_str }}</span>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if page.abstract or page.collaborators or page.role or page.skill_themes or page.tags %}
+    <dl class="project-meta">
+      {% if page.abstract %}
+      <dt class="project-meta__label">Summary</dt>
+      <dd class="project-meta__value">{{ page.abstract }}</dd>
+      {% endif %}
+      {% if page.collaborators and page.collaborators != "" %}
+      <dt class="project-meta__label">With</dt>
+      <dd class="project-meta__value">{{ page.collaborators }}</dd>
+      {% endif %}
+      {% if page.role %}
+      <dt class="project-meta__label">My role</dt>
+      <dd class="project-meta__value">{{ page.role }}</dd>
+      {% endif %}
+      {% if page.skill_themes %}
+      <dt class="project-meta__label">Core capabilities</dt>
+      <dd class="project-meta__value">{{ page.skill_themes | join: " · " }}</dd>
+      {% endif %}
+      {% if page.tags %}
+      <dt class="project-meta__label">Tags</dt>
+      <dd class="project-meta__value">{{ page.tags | join: " · " }}</dd>
+      {% endif %}
+    </dl>
+    {% endif %}
+
+    {% assign has_project_url = page.project_url | strip %}
+    {% if has_project_url != "" %}
+    <ul class="cv-actions" aria-label="Project links">
+      <li>
+        <a href="{{ page.project_url }}" class="cv-action-link">
+          {% include icon.html name="external-link" size="18" aria-hidden="true" %}
+          <span>View Project</span>
+          <span class="visually-hidden">: {{ page.title }}</span>
+        </a>
+      </li>
+    </ul>
+    {% endif %}
+
+    {% if content != "" %}
+    <div class="collection-detail__body prose">
+      {{ content }}
+    </div>
+    {% endif %}
+
+    {% assign sorted = site.projects | where_exp: "item", "item.published != false" | sort: "sort_date" | reverse %}
+    {% assign current_index = nil %}
+    {% for item in sorted %}
+      {% if item.url == page.url %}
+        {% assign current_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if current_index %}
+    {% assign prev_index = current_index | minus: 1 %}
+    {% assign next_index = current_index | plus: 1 %}
+    <nav class="pager" aria-label="Previous and next projects">
+      {% if prev_index >= 0 %}
+      <a href="{{ sorted[prev_index].url | relative_url }}" class="pager__link">
+        <span class="pager__label">&larr; Newer</span>
+        {{ sorted[prev_index].title }}
+      </a>
+      {% endif %}
+      {% if next_index < sorted.size %}
+      <a href="{{ sorted[next_index].url | relative_url }}" class="pager__link pager__link--next">
+        <span class="pager__label">Older &rarr;</span>
+        {{ sorted[next_index].title }}
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </article>
+</div>

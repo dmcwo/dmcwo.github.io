@@ -1,0 +1,68 @@
+Publications Migration Log
+==================================================
+Started at: 2026-02-16 14:50:43 -0800
+
+Source directory: /Users/d2worsham/Documents/GitHub/dmcwo/_publications
+Destination directory: /Users/d2worsham/Documents/GitHub/dmcwo-3/_publications
+
+Found 12 publication files to migrate
+==================================================
+
+Processing: 2017-02-23-acrl-students-lead-the-library.md
+  ✓ Migrated to: acrl-students-lead-the-library.md
+    Year: 2017, Category: article
+
+Processing: 2017-05-04-rsr-digital-research-notebook.md
+  ✓ Migrated to: rsr-digital-research-notebook.md
+    Year: 2017, Category: article
+
+Processing: 2018-05-01-loex-interview.md
+  ✓ Migrated to: loex-interview.md
+    Year: 2018, Category: interview
+
+Processing: 2019-03-01-primo-site-of-the-month.md
+  ✓ Migrated to: primo-site-of-the-month.md
+    Year: 2019, Category: interview
+
+Processing: 2020-01-20-user-engagement-a-matrix-reorganization.md
+  ✓ Migrated to: user-engagement-a-matrix-reorganization.md
+    Year: 2020, Category: article
+
+Processing: 2020-01-30-the-wire-way-manifesto-and-process-for-learner-led-design.md
+  ✓ Migrated to: the-wire-way-manifesto-and-process-for-learner-led-design.md
+    Year: 2020, Category: article
+
+Processing: 2020-05-08-interview-writing-a-literature-review.md
+  ✓ Migrated to: interview-writing-a-literature-review.md
+    Year: 2020, Category: interview
+
+Processing: 2020-07-08-when-you-only-have-a-week.markdown
+  ✓ Migrated to: when-you-only-have-a-week.md
+    Year: 2020, Category: article
+
+Processing: 2020-10-01-more-than-an-internship.md
+  ✓ Migrated to: more-than-an-internship.md
+    Year: 2020, Category: article
+
+Processing: 2020-10-01-primo-site-of-the-month-oct-2020.md
+  ✓ Migrated to: primo-site-of-the-month-oct-2020.md
+    Year: 2020, Category: interview
+
+Processing: 2021-02-01-creating-a-stem-collaborative-learning-center.md
+  ✓ Migrated to: creating-a-stem-collaborative-learning-center.md
+    Year: 2021, Category: article
+
+Processing: 2022-09-02-You-Only-Get-One-Shot.md
+  ✓ Migrated to: You-Only-Get-One-Shot.md
+    Year: 2022, Category: article
+
+==================================================
+Migration Summary
+==================================================
+Total files: 12
+Successful: 12
+Failed: 0
+
+Completed at: 2026-02-16 14:50:43 -0800
+
+✓ All publications migrated successfully!

@@ -1,0 +1,188 @@
+@use "variables" as *;
+// =============================================================================
+// Header
+// Site header, navigation, theme switcher
+// =============================================================================
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height;
+  gap: $space-4;
+}
+
+// Site title / logo
+// ---------------------------------------------------------------------------
+.site-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--color-link);
+  }
+}
+
+// Hamburger toggle button — visible only on mobile
+// ---------------------------------------------------------------------------
+.site-nav__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  flex-shrink: 0;
+  // Push toggle to the right of the title, before the theme switcher
+  margin-left: auto;
+
+  &:hover {
+    background-color: var(--color-bg-alt);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  // Hide on desktop — nav is always visible
+  @media (min-width: $bp-md) {
+    display: none;
+  }
+}
+
+// Toggle icon swap: show menu icon by default, show X when open
+// ---------------------------------------------------------------------------
+.site-nav__toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-nav__toggle-icon--close {
+  display: none;
+}
+
+.site-nav__toggle[aria-expanded="true"] {
+  .site-nav__toggle-icon--menu { display: none; }
+  .site-nav__toggle-icon--close { display: flex; }
+}
+
+// Main navigation
+// ---------------------------------------------------------------------------
+.site-nav {
+  // Mobile: hidden drawer that drops below the header
+  @media (max-width: $bp-md - 1px) {
+    display: none;
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    flex-direction: column;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: $space-3 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    &.is-open {
+      display: flex;
+    }
+  }
+
+  // Desktop: horizontal inline row
+  @media (min-width: $bp-md) {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+}
+
+.site-nav__link {
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  padding: $space-1 $space-2;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    color: var(--color-text);
+    background-color: var(--color-bg-alt);
+  }
+
+  &[aria-current="page"] {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  // Mobile: full-width tappable rows
+  @media (max-width: $bp-md - 1px) {
+    display: block;
+    padding: $space-3 $space-5;
+    border-radius: 0;
+    font-size: 1rem;
+
+    & + & {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+}
+
+// Theme switcher
+// ---------------------------------------------------------------------------
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  flex-shrink: 0;
+
+  @media (min-width: $bp-md) {
+    margin-left: $space-4;
+  }
+}
+
+.theme-switcher__label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+
+  // Hide label on small screens, keep accessible
+  @media (max-width: $bp-md - 1px) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+}
+
+.theme-switcher__select {
+  font-size: 0.8rem;
+  padding: $space-1 $space-2;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}

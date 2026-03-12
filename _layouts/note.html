@@ -1,0 +1,80 @@
+---
+layout: default
+---
+<div class="container container--narrow">
+  <article class="collection-detail">
+    <header class="collection-detail__header">
+      <h1 class="collection-detail__title">
+        {% if page.icon %}{% include icon.html name=page.icon size="32" %}{% endif %}
+        <span>{{ page.title }}</span>
+      </h1>
+      <div class="collection-detail__meta">
+        {% if page.date %}<p class="cv-entry__date">{{ page.date | date: "%B %d, %Y" }}</p>{% endif %}
+        {% if page.categories and page.categories.size > 0 %}
+        <p>
+          {% include icon.html name="folder" size="16" %}
+          <span>{{ page.categories | join: ", " }}</span>
+        </p>
+        {% endif %}
+        {% if page.tags and page.tags.size > 0 %}
+        <p>
+          {% include icon.html name="tag" size="16" %}
+          <span>{{ page.tags | join: ", " }}</span>
+        </p>
+        {% endif %}
+      </div>
+    </header>
+
+    {% assign has_featured = page.featured_image | strip %}
+    {% if has_featured != "" %}
+    <div class="collection-detail__feature-image">
+      <img src="{{ page.featured_image | relative_url }}" alt="{{ page.featured_image_alt | default: page.title }}" />
+    </div>
+    {% endif %}
+
+    {% if page.summary %}
+    <div class="collection-detail__abstract">
+      <div class="collection-detail__abstract-header">
+        {% include icon.html name="clipboard-list" size="18" %}
+        <strong>Summary</strong>
+      </div>
+      <div class="collection-detail__abstract-body">
+        {{ page.summary }}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if content != "" %}
+    <div class="collection-detail__body prose">
+      {{ content }}
+    </div>
+    {% endif %}
+
+    {% assign sorted = site.notes | sort: "sort_date" | reverse %}
+    {% assign current_index = nil %}
+    {% for item in sorted %}
+      {% if item.url == page.url %}
+        {% assign current_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if current_index %}
+    {% assign prev_index = current_index | minus: 1 %}
+    {% assign next_index = current_index | plus: 1 %}
+    <nav class="pager" aria-label="Previous and next notes">
+      {% if prev_index >= 0 %}
+      <a href="{{ sorted[prev_index].url | relative_url }}" class="pager__link">
+        <span class="pager__label">&larr; Newer</span>
+        {{ sorted[prev_index].title }}
+      </a>
+      {% endif %}
+      {% if next_index < sorted.size %}
+      <a href="{{ sorted[next_index].url | relative_url }}" class="pager__link pager__link--next">
+        <span class="pager__label">Older &rarr;</span>
+        {{ sorted[next_index].title }}
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </article>
+</div>

@@ -1,0 +1,23 @@
+<section id="education" class="cv-section">
+  <h2 class="cv-section__heading">Education</h2>
+  {% assign education = site.education | where_exp: "item", "item.published != false" | sort: "sort_date" | reverse %}
+  {% assign degrees = education | where: "category", "degree" %}
+  {% assign training = education | where_exp: "item", "item.category != 'degree'" %}
+
+  {% if degrees.size > 0 %}
+  <div class="cv-category">
+    {% for entry in degrees %}
+    {% include components/education-entry.html entry=entry heading_level="h3" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if training.size > 0 %}
+  <div class="cv-category">
+    <h3 class="cv-category__heading">Professional Training</h3>
+    {% for entry in training %}
+    {% include components/education-entry.html entry=entry heading_level="h4" %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

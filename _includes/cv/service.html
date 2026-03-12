@@ -1,0 +1,16 @@
+<section id="service" class="cv-section">
+  <h2 class="cv-section__heading">Service & Leadership</h2>
+  {% assign service = site.service | where_exp: "item", "item.published != false" | sort: "sort_date" | reverse %}
+  {% assign grouped_orgs = service | group_by: "organization" %}
+  {% for group in grouped_orgs %}
+  <div class="cv-org-group">
+    <h3 class="cv-org-group__heading">{{ group.name }}</h3>
+    <div class="cv-org-group__entries">
+      {% assign sorted_items = group.items | sort: "sort_date" | reverse %}
+      {% for entry in sorted_items %}
+      {% include components/service-entry.html entry=entry heading_level="h4" %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>

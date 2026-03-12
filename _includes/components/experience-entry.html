@@ -1,0 +1,26 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">{{ include.entry.title }}</{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      {% if include.entry.location and include.entry.location != "" %}
+      <span class="cv-entry__location">{{ include.entry.location }}</span>
+      {% endif %}
+      <span class="cv-entry__date">
+        {{ include.entry.start_date | date: "%Y" }}{% if include.entry.end_date %} &ndash; {{ include.entry.end_date | date: "%Y" }}{% else %} &ndash; Present{% endif %}
+      </span>
+    </div>
+  </div>
+  {% if include.entry.highlights %}
+  <ul class="cv-entry__highlights">
+    {% for highlight in include.entry.highlights %}
+    <li>{{ highlight }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% assign body_content = include.entry.content | strip %}
+  {% if body_content != "" %}
+  <div class="cv-entry__body">
+    {{ include.entry.content }}
+  </div>
+  {% endif %}
+</article>

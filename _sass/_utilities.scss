@@ -1,0 +1,83 @@
+@use "variables" as *;
+// =============================================================================
+// Utilities
+// Helper classes
+// =============================================================================
+
+// Visually hidden — accessible to screen readers
+// ---------------------------------------------------------------------------
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Skip link — visible on focus
+// ---------------------------------------------------------------------------
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: $space-4;
+  z-index: 1000;
+  padding: $space-2 $space-4;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Flow — vertical rhythm for children
+// ---------------------------------------------------------------------------
+.flow > * + * {
+  margin-top: var(--flow-space, #{$space-5});
+}
+
+// Image grid — responsive multi-column photo layout for content
+// ---------------------------------------------------------------------------
+// Usage: <div class="image-grid image-grid--2"> or --3
+// Images inside fill their cell and maintain aspect ratio.
+.image-grid {
+  display: grid;
+  gap: $space-3;
+  margin: $space-5 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+}
+
+.image-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.image-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+
+  // Collapse to 2 columns on small screens
+  @media (max-width: $bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Cluster — horizontal flex group
+// ---------------------------------------------------------------------------
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, #{$space-4});
+  align-items: center;
+}

@@ -1,0 +1,116 @@
+---
+layout: default
+---
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+      {% assign collection_name = page.collection_name %}
+      {% assign items = site[collection_name] | where_exp: "item", "item.published != false" %}
+      {% assign config = site.data.collection-config[collection_name] %}
+    {% if page.description %}
+    <p class="page-description">{{ items.size }} {{ page.description | downcase }}</p>
+    {% endif %}
+  <!--<p class="collection-count">{{ items.size }} {{ collection_name }}</p>-->
+  </header>
+
+
+
+  {{ content }}
+
+  <div class="collection-list{% if collection_name == 'projects' %} collection-list--wide{% endif %}">
+    {%- comment -%}
+    Check if grouping is enabled for this collection
+    {%- endcomment -%}
+    {% if config.grouping.enabled %}
+      {%- comment -%}
+      Loop categories in config-defined order, pulling matching items for each.
+      This preserves the order categories are listed in _data/collection-config.yml.
+      {%- endcomment -%}
+      {% for category_config in config.grouping.categories %}
+        {% assign group_items = items | where: config.grouping.field, category_config.name %}
+
+        {% if group_items.size > 0 %}
+          <section class="cv-section">
+            <h2 class="cv-section__heading">
+              {% if category_config.icon %}
+                {% include icon.html name=category_config.icon size="20" %}
+              {% endif %}
+              {{ category_config.display | default: category_config.name | capitalize }}
+            </h2>
+
+            {% assign sorted_items = group_items | sort: "sort_date" | reverse %}
+            {% if collection_name == "projects" %}
+              <div class="project-tiles">
+                {% for item in sorted_items %}
+                <article class="project-tile">
+                  <div class="project-tile__body">
+                    <h3 class="project-tile__title">
+                      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                    </h3>
+                    {% if item.subtitle %}
+                    <p class="project-tile__subtitle">{{ item.subtitle }}</p>
+                    {% endif %}
+                    {% if item.institution %}
+                    <p class="project-tile__institution">{{ item.institution }}</p>
+                    {% endif %}
+                  </div>
+                </article>
+                {% endfor %}
+              </div>
+            {% else %}
+              {% for item in sorted_items %}
+              <div class="collection-item">
+                {% if collection_name == "publications" %}
+                  {% include components/publication-entry.html entry=item heading_level="h3" context="list" %}
+                {% elsif collection_name == "presentations" %}
+                  {% include components/presentation-entry.html entry=item heading_level="h3" context="list" %}
+                {% elsif collection_name == "notes" %}
+                  {% include components/note-entry.html entry=item heading_level="h3" context="list" %}
+                {% endif %}
+              </div>
+              {% endfor %}
+            {% endif %}
+          </section>
+        {% endif %}
+      {% endfor %}
+
+    {% else %}
+      {%- comment -%}
+      Flat list (no grouping) for this collection
+      {%- endcomment -%}
+      {% assign sorted_items = items | sort: "sort_date" | reverse %}
+
+      {% if collection_name == "projects" %}
+        <div class="project-tiles">
+          {% for item in sorted_items %}
+          <article class="project-tile">
+            <div class="project-tile__body">
+              <h2 class="project-tile__title">
+                <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+              </h2>
+              {% if item.subtitle %}
+              <p class="project-tile__subtitle">{{ item.subtitle }}</p>
+              {% endif %}
+              {% if item.institution %}
+              <p class="project-tile__institution">{{ item.institution }}</p>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        {% for item in sorted_items %}
+        <div class="collection-item">
+          {% if collection_name == "publications" %}
+            {% include components/publication-entry.html entry=item heading_level="h2" context="list" %}
+          {% elsif collection_name == "presentations" %}
+            {% include components/presentation-entry.html entry=item heading_level="h2" context="list" %}
+          {% elsif collection_name == "notes" %}
+            {% include components/note-entry.html entry=item heading_level="h2" context="list" %}
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

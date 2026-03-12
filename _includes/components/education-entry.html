@@ -1,0 +1,21 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">
+      {% if include.entry.credential_url %}
+      <a href="{{ include.entry.credential_url }}">{{ include.entry.title }}</a>
+      {% else %}
+      {{ include.entry.title }}
+      {% endif %}
+    </{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      <span>{{ include.entry.institution }}</span>
+      <span class="cv-entry__date">{{ include.entry.year }}</span>
+    </div>
+  </div>
+  {% assign body_content = include.entry.content | strip %}
+  {% if body_content != "" %}
+  <div class="cv-entry__body">
+    {{ include.entry.content }}
+  </div>
+  {% endif %}
+</article>

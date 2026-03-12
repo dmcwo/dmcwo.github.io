@@ -1,0 +1,82 @@
+// =============================================================================
+// Themes
+// Five colour schemes via CSS custom properties
+// Default (Mocha) loads on :root — no JS required
+// Other themes activated via data-theme attribute on <html>
+// =============================================================================
+
+// 1. Mocha (Default)
+// Built around #A47864
+:root,
+[data-theme="mocha"] {
+  --color-bg: #fdfaf8;
+  --color-bg-alt: #f5ede8;
+  --color-text: #2c1810;
+  --color-text-muted: #6b5147;
+  --color-accent: #a47864;
+  --color-accent-dark: #7d5a49;
+  --color-border: #d9c4b8;
+  --color-link: #8b5e3c;
+  --color-link-hover: #6b4529;
+  --color-focus-ring: #a47864;
+}
+
+// 2. Cloud
+// Built around #F0EEE9
+[data-theme="cloud"] {
+  --color-bg: #f0eee9;
+  --color-bg-alt: #e6e3dc;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c5c5c;
+  --color-accent: #3d5a80;
+  --color-accent-dark: #2b4460;
+  --color-border: #c8c4bc;
+  --color-link: #3d5a80;
+  --color-link-hover: #2b4460;
+  --color-focus-ring: #3d5a80;
+}
+
+// 3. Deep Focus
+// Dark scheme for extended reading
+[data-theme="deep"] {
+  --color-bg: #1b1f23;
+  --color-bg-alt: #242930;
+  --color-text: #e8e6e3;
+  --color-text-muted: #9ca3af;
+  --color-accent: #d4a574;
+  --color-accent-dark: #e0ba8a;
+  --color-border: #3a3f47;
+  --color-link: #d4a574;
+  --color-link-hover: #e0ba8a;
+  --color-focus-ring: #d4a574;
+}
+
+// 4. Archival
+// Aged paper and academic typography
+[data-theme="archival"] {
+  --color-bg: #f7f3ed;
+  --color-bg-alt: #ede7dd;
+  --color-text: #2d2926;
+  --color-text-muted: #6e655c;
+  --color-accent: #8c4a2f;
+  --color-accent-dark: #6e3a24;
+  --color-border: #d1c7b8;
+  --color-link: #8c4a2f;
+  --color-link-hover: #6e3a24;
+  --color-focus-ring: #8c4a2f;
+}
+
+// 5. Verdant
+// Fresh, contemporary, growth
+[data-theme="verdant"] {
+  --color-bg: #f8faf8;
+  --color-bg-alt: #edf2ed;
+  --color-text: #1a2e1a;
+  --color-text-muted: #4a6b4a;
+  --color-accent: #3a7d44;
+  --color-accent-dark: #2b5e33;
+  --color-border: #bfd0bf;
+  --color-link: #2e6b38;
+  --color-link-hover: #1f4d26;
+  --color-focus-ring: #3a7d44;
+}

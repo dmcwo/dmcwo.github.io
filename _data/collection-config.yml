@@ -1,0 +1,81 @@
+# Collection display configuration
+# Defines grouping behavior and icon mappings for each collection
+
+publications:
+  grouping:
+    enabled: true
+    field: "category"
+    categories:
+      - name: "article"
+        icon: "file-text"
+        display: "Articles"
+        description: "Peer-reviewed journal articles"
+
+      - name: "book chapter"
+        icon: "book-open"
+        display: "Book Chapters"
+        description: "Chapters in edited volumes"
+
+      - name: "interview"
+        icon: "mic"
+        display: "Interviews"
+        description: "Published interviews and conversations"
+
+presentations:
+  grouping:
+    enabled: true
+    field: "category"
+    categories:
+      - name: "keynote"
+        icon: "mic"
+        display: "Keynotes"
+        description: "Invited keynote addresses"
+
+      - name: "workshop"
+        icon: "lightbulb"
+        display: "Pre-conference Workshops"
+        description: "Pre-conference workshops"
+
+      - name: "presentation"
+        icon: "presentation"
+        display: "Presentations"
+        description: "Conference and invited presentations"
+
+      - name: "poster"
+        icon: "layout-template"
+        display: "Posters"
+        description: "Poster presentations"
+
+      - name: "conference organizing"
+        icon: "folder"
+        display: "Conference Organizing"
+        description: "Conference and symposium organizing roles"
+
+      - name: "training"
+        icon: "folder"
+        display: "Staff Training"
+        description: "Training for staff and collaborators"
+
+notes:
+  grouping:
+    enabled: false  # Notes use per-item icons instead
+
+projects:
+  grouping:
+    enabled: true
+    field: "category"
+    categories:
+      - name: "organizational-design"
+        icon: "folder"
+        display: "Organizational Design and Team-Building"
+        description: "Organizational capacity building, founding teams, and launching governance systems"
+
+      - name: "learning-design"
+        icon: "book-open"
+        display: "Learning Design"
+        description: "Learning Management System Development, Digital Pedagogy, and Open Education"
+
+      - name: "service-design"
+        icon: "clipboard-list"
+        display: "Service and Space Design"
+        description: "Participatory, user-centered design for services and spaces"

@@ -1,0 +1,24 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">
+      {% assign ext_url = include.entry.external_url | strip %}
+      {% if ext_url != "" %}
+      <a href="{{ include.entry.external_url }}">{{ include.entry.title }}</a>
+      {% else %}
+      {{ include.entry.title }}
+      {% endif %}
+    </{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      {% if include.entry.institution %}<span>{{ include.entry.institution }}</span>{% endif %}
+      {% if include.entry.co_instructors and include.entry.co_instructors != "" %}
+      <span>Co-taught with {{ include.entry.co_instructors }}</span>
+      {% endif %}
+    </div>
+  </div>
+  {% assign body_content = include.entry.content | strip %}
+  {% if body_content != "" %}
+  <div class="cv-entry__body">
+    {{ include.entry.content }}
+  </div>
+  {% endif %}
+</article>

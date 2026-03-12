@@ -1,0 +1,19 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">{{ include.entry.title }}</{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      {% if include.entry.role %}<span>{{ include.entry.role }}</span>{% endif %}
+      <span class="cv-entry__date">
+        {% if include.entry.start_date %}
+        {{ include.entry.start_date | date: "%Y" }}{% if include.entry.end_date %} &ndash; {{ include.entry.end_date | date: "%Y" }}{% else %} &ndash; Present{% endif %}
+        {% endif %}
+      </span>
+    </div>
+  </div>
+  {% assign body_content = include.entry.content | strip %}
+  {% if body_content != "" %}
+  <div class="cv-entry__body">
+    {{ include.entry.content }}
+  </div>
+  {% endif %}
+</article>

@@ -1,0 +1,7 @@
+<section id="publications" class="cv-section">
+  <h2 class="cv-section__heading">Publications</h2>
+  {% assign publications = site.publications | where_exp: "item", "item.published != false" | sort: "sort_date" | reverse %}
+  {% for entry in publications %}
+  {% include components/publication-entry.html entry=entry heading_level="h3" context="cv" %}
+  {% endfor %}
+</section>

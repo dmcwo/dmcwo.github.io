@@ -1,0 +1,21 @@
+<article class="cv-entry">
+  <div class="cv-entry__header">
+    <{{ include.heading_level | default: "h3" }} class="cv-entry__title">{{ include.entry.title }}</{{ include.heading_level | default: "h3" }}>
+    <div class="cv-entry__meta">
+      <span>{{ include.entry.funder }}</span>
+      <span class="cv-entry__date">{{ include.entry.year }}</span>
+      {% if include.entry.status %}
+      <span class="cv-badge{% if include.entry.status == 'funded' %} cv-badge--funded{% endif %}">{{ include.entry.status }}</span>
+      {% endif %}
+    </div>
+  </div>
+  {% if include.entry.co_authors and include.entry.co_authors != "" %}
+  <p class="cv-entry__body text-muted text-small">Co-authored with {{ include.entry.co_authors }}</p>
+  {% endif %}
+  {% assign body_content = include.entry.content | strip %}
+  {% if body_content != "" %}
+  <div class="cv-entry__body">
+    {{ include.entry.content }}
+  </div>
+  {% endif %}
+</article>

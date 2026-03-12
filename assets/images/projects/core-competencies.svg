@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#3d5a80"/>
+  <text font-family="Georgia, serif" fill="white" text-anchor="middle">
+    <tspan x="400" y="185" font-size="32" font-weight="bold" dy="0">UCLA Library Core</tspan>
+    <tspan x="400" dy="1.3em" font-size="32" font-weight="bold">Competencies for Research</tspan>
+    <tspan x="400" dy="1.3em" font-size="32" font-weight="bold">and Information Literacy</tspan>
+  </text>
+  <text font-family="Georgia, serif" fill="white" fill-opacity="0.8" text-anchor="middle">
+    <tspan x="400" y="340" font-size="18">UCLA Library</tspan>
+  </text>
+</svg>

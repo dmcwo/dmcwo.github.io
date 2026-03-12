@@ -1,0 +1,66 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+
+    <button
+      class="site-nav__toggle"
+      aria-controls="site-nav"
+      aria-expanded="false"
+      aria-label="Open navigation menu"
+    >
+      <span class="site-nav__toggle-icon site-nav__toggle-icon--menu" aria-hidden="true">
+        {% include icon.html name="menu" size="22" %}
+      </span>
+      <span class="site-nav__toggle-icon site-nav__toggle-icon--close" aria-hidden="true">
+        {% include icon.html name="x" size="22" %}
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="{{ '/' | relative_url }}" class="site-nav__link"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+      {% comment %}<a href="{{ '/about/' | relative_url }}" class="site-nav__link"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>{% endcomment %}
+      <a href="{{ '/projects/' | relative_url }}" class="site-nav__link"{% if page.url contains '/projects' %} aria-current="page"{% endif %}>Projects</a>
+      <a href="{{ '/presentations/' | relative_url }}" class="site-nav__link"{% if page.url contains '/presentations' %} aria-current="page"{% endif %}>Presentations</a>
+      <a href="{{ '/publications/' | relative_url }}" class="site-nav__link"{% if page.url contains '/publications' %} aria-current="page"{% endif %}>Publications</a>
+      <a href="{{ '/notes/' | relative_url }}" class="site-nav__link"{% if page.url contains '/notes' %} aria-current="page"{% endif %}>Notes</a>
+    </nav>
+
+    {% include theme-switcher.html %}
+  </div>
+</header>
+
+<script>
+(function () {
+  var btn = document.querySelector('.site-nav__toggle');
+  var nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+
+  function openNav() {
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close navigation menu');
+    nav.classList.add('is-open');
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('click', onOutsideClick);
+  }
+
+  function closeNav() {
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open navigation menu');
+    nav.classList.remove('is-open');
+    document.removeEventListener('keydown', onKeyDown);
+    document.removeEventListener('click', onOutsideClick);
+  }
+
+  function onKeyDown(e) {
+    if (e.key === 'Escape') { closeNav(); btn.focus(); }
+  }
+
+  function onOutsideClick(e) {
+    if (!nav.contains(e.target) && !btn.contains(e.target)) { closeNav(); }
+  }
+
+  btn.addEventListener('click', function () {
+    btn.getAttribute('aria-expanded') === 'true' ? closeNav() : openNav();
+  });
+})();
+</script>

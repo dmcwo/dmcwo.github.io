@@ -1,0 +1,199 @@
+Presentations Migration Log
+==================================================
+Started at: 2026-02-16 18:02:35 -0800
+
+Source directory: /Users/d2worsham/Documents/GitHub/dmcwo/_presentations
+Destination directory: /Users/d2worsham/Documents/GitHub/dmcwo-3/_presentations
+
+Found 45 presentation files to migrate
+==================================================
+
+Processing: 2000-09-22-presentation-example.md
+  ✓ Migrated to: presentation-example.md
+    Date: 1990-01-01, Presenters: 
+
+Processing: 2002-05-03-presentation-sfsu-matesol-unrehearsed-communication.md
+  ✓ Migrated to: presentation-sfsu-matesol-unrehearsed-communication.md
+    Date: 2002-05-03, Presenters: Doug Worsham
+
+Processing: 2004-04-02-presentation-tesol-instant-documentaries.md
+  ✓ Migrated to: presentation-tesol-instant-documentaries.md
+    Date: 2004-04-02, Presenters: Doug Worsham
+
+Processing: 2005-04-01-presentation-tesol-feedback-on-student-presentations.md
+  ✓ Migrated to: presentation-tesol-feedback-on-student-presentations.md
+    Date: 2005-04-01, Presenters: Doug Worsham
+
+Processing: 2005-04-01-presentation-tesol-lessonbuilder.md
+  ✓ Migrated to: presentation-tesol-lessonbuilder.md
+    Date: 2005-04-01, Presenters: Doug Worsham
+
+Processing: 2005-05-01-presentation-tls-collaborative-learning-lab.md
+  ✓ Migrated to: presentation-tls-collaborative-learning-lab.md
+    Date: 2005-05-01, Presenters: Doug Worsham
+
+Processing: 2005-05-01-presentation-tls-improving-class-discussions-online-chats.md
+  ✓ Migrated to: presentation-tls-improving-class-discussions-online-chats.md
+    Date: 2005-05-01, Presenters: Doug Worsham
+
+Processing: 2005-08-08-presentation-fleat-making-wikis-work.md
+  ✓ Migrated to: presentation-fleat-making-wikis-work.md
+    Date: 2005-08-08, Presenters: Doug Worsham
+
+Processing: 2006-04-21-presentation-mwallt-evaluating-professor-podcast.md
+  ✓ Migrated to: presentation-mwallt-evaluating-professor-podcast.md
+    Date: 2006-04-21, Presenters: Ron Cramer and Doug Worsham
+
+Processing: 2006-06-08-presentation-c2es-meet-professor-podcast.md
+  ✓ Migrated to: presentation-c2es-meet-professor-podcast.md
+    Date: 2006-06-08, Presenters: Ron Cramer and Doug Worsham
+
+Processing: 2006-11-07-presentation-cicltg-podcast-polyglots.md
+  ✓ Migrated to: presentation-cicltg-podcast-polyglots.md
+    Date: 2006-11-07, Presenters: Ron Cramer and Doug Worsham
+
+Processing: 2007-04-13-wiscwiki-conference.md
+  ✓ Migrated to: wiscwiki-conference.md
+    Date: 2007-04-13, Presenters: Doug Worsham
+
+Processing: 2007-05-30-presentation-tls-ls-lessonshare.md
+  ✓ Migrated to: presentation-tls-ls-lessonshare.md
+    Date: 2007-05-30, Presenters: Doug Worsham
+
+Processing: 2007-05-30-presentation-tls-social-networking-remix-culture.md
+  ✓ Migrated to: presentation-tls-social-networking-remix-culture.md
+    Date: 2007-05-30, Presenters: Doug Worsham
+
+Processing: 2007-05-30-presentation-tls-wikis-foster-collaboration.md
+  ✓ Migrated to: presentation-tls-wikis-foster-collaboration.md
+    Date: 2007-05-30, Presenters: Doug Worsham
+
+Processing: 2007-05-30-presentation-tls-wisconsin-idea-podcasting.md
+  ✓ Migrated to: presentation-tls-wisconsin-idea-podcasting.md
+    Date: 2007-05-30, Presenters: Ron Cramer and Doug Worsham
+
+Processing: 2007-06-21-presentation-iallt-wikis-audience-authorship-assessment.md
+  ✓ Migrated to: presentation-iallt-wikis-audience-authorship-assessment.md
+    Date: 2007-06-21, Presenters: Doug Worsham
+
+Processing: 2007-10-23-educause-personal-authoring-technologies.md
+  ✓ Migrated to: educause-personal-authoring-technologies.md
+    Date: 2007-10-23, Presenters: Blaire Bundy, Ron Cramer, and Doug Worsham
+
+Processing: 2009-02-26-presentation-stle-moving-toward-student-centered-learning.md
+  ✓ Migrated to: presentation-stle-moving-toward-student-centered-learning.md
+    Date: 2009-02-26, Presenters: Lauren Shawl and Doug Worsham
+
+Processing: 2009-11-05-presentation-educause-creating-custom-learning-environments.md
+  ✓ Migrated to: presentation-educause-creating-custom-learning-environments.md
+    Date: 2009-11-05, Presenters: Gary Chinn and Doug Worsham
+
+Processing: 2010-01-20-presentation-eli-collaborative-conundrum.md
+  ✓ Migrated to: presentation-eli-collaborative-conundrum.md
+    Date: 2010-01-20, Presenters: Timothy Dugdale, Lindsey Schmidt, and Doug Worsham
+
+Processing: 2011-06-16-presentation-nmc-knowledge-building-for-dh.md
+  ✓ Migrated to: presentation-nmc-knowledge-building-for-dh.md
+    Date: 2011-06-16, Presenters: Chad Shorter, Todd Goddard, and Doug Worsham
+
+Processing: 2011-06-23-presentation-iallt-collaborative-sites.md
+  ✓ Migrated to: presentation-iallt-collaborative-sites.md
+    Date: 2011-06-23, Presenters: Doug Worsham
+
+Processing: 2012-09-04-presentation-thatcampsocal-drupal-starter-kit.md
+  ✓ Migrated to: presentation-thatcampsocal-drupal-starter-kit.md
+    Date: 2012-09-04, Presenters: Doug Worsham
+
+Processing: 2013-12-06-presentation-carl-dig-research-support-beyond-a-desk.md
+  ✓ Migrated to: presentation-carl-dig-research-support-beyond-a-desk.md
+    Date: 2013-12-06, Presenters: Allison Benedetti and Doug Worsham
+
+Processing: 2014-04-05-presentation-carl-dig-leading-the-way.md
+  ✓ Migrated to: presentation-carl-dig-leading-the-way.md
+    Date: 2014-04-05, Presenters: Doug Worsham
+
+Processing: 2014-04-11-presentation-swallt-participatory-design.md
+  ✓ Migrated to: presentation-swallt-participatory-design.md
+    Date: 2014-04-11, Presenters: Doug Worsham
+
+Processing: 2014-05-10-presentation-LOEX-Writing-Thinking-Learning.md
+  ✓ Migrated to: presentation-LOEX-Writing-Thinking-Learning.md
+    Date: 2014-05-10, Presenters: Julia Glassman, Christine Holten, and Doug Worsham
+
+Processing: 2014-12-10-lj-data-assessment-participatory-design.md
+  ✓ Migrated to: lj-data-assessment-participatory-design.md
+    Date: 2014-12-10, Presenters: Char Booth, Sarah Lower, and Doug Worsham
+
+Processing: 2016-03-17-presentation-iallt-participatory-design-and-evaluation.md
+  ✓ Migrated to: presentation-iallt-participatory-design-and-evaluation.md
+    Date: 2016-03-17, Presenters: Doug Worsham
+
+Processing: 2016-06-10-presentation-liw-digital-research-notebook.md
+  ✓ Migrated to: presentation-liw-digital-research-notebook.md
+    Date: 2016-06-10, Presenters: Julia Glassman and Doug Worsham
+
+Processing: 2016-06-10-presentation-liw-learning-theories.md
+  ✓ Migrated to: presentation-liw-learning-theories.md
+    Date: 2016-06-10, Presenters: Erica DeFrain, Julia Glassman, Nicole Pagowsky, and Doug Worsham
+
+Processing: 2017-04-10-lilac-research-notebook.md
+  ✓ Migrated to: lilac-research-notebook.md
+    Date: 2017-04-10, Presenters: Julia Glassman and Doug Worsham
+
+Processing: 2017-05-31-healthy-discontent-about-assessment.md
+  ✓ Migrated to: healthy-discontent-about-assessment.md
+    Date: 2017-05-31, Presenters: Doug Worsham
+
+Processing: 2017-08-21-library-based-curriculum-students-into-scholars.md
+  ✓ Migrated to: library-based-curriculum-students-into-scholars.md
+    Date: 2017-08-21, Presenters: Margaritan Nafpaktitis & Doug Worsham
+
+Processing: 2017-09-15-exploring-your-options-with-online-research-skills-instruction.md
+  ✓ Migrated to: exploring-your-options-with-online-research-skills-instruction.md
+    Date: 2017-09-14, Presenters: Doug Worsham
+
+Processing: 2018-02-23-flipping-engineering-information-literacy-instruction.md
+  ✓ Migrated to: flipping-engineering-information-literacy-instruction.md
+    Date: 2018-02-23, Presenters: Elizabeth Cheney and Tony Aponte
+
+Processing: 2018-04-13-DIY-spaces-in-an-age-of-change.md
+  ✓ Migrated to: DIY-spaces-in-an-age-of-change.md
+    Date: 2018-04-13, Presenters: Courtney Hoffner, Juan Jaime, Doug Worsham
+
+Processing: 2018-04-13-can-librarians-wear-plaid.md
+  ✓ Migrated to: can-librarians-wear-plaid.md
+    Date: 2018-04-13, Presenters: Elizabeth Cheney, Rikke Ogawa, and Doug Worsham
+
+Processing: 2018-04-13-lets-build-something-instructional-design-workshop.md
+  ✓ Migrated to: lets-build-something-instructional-design-workshop.md
+    Date: 2018-04-13, Presenters: Dani Brecher Cook and Doug Worsham
+
+Processing: 2020-07-24-future-of-reference.md
+  ✓ Migrated to: future-of-reference.md
+    Date: 2020-07-24, Presenters: Courtney Hoffner, Antonia Osuna-Garcia, Bethany Myers, Doug Worsham
+
+Processing: 2021-02-11-scenarios-for-success.md
+  ✓ Migrated to: scenarios-for-success.md
+    Date: 2021-02-11, Presenters: Gayle R. Schaub, Hazel A. McClure, Doug Worsham, Caitlin Richardson
+
+Processing: 2021-04-13-high-impact-librarianship.md
+  ✓ Migrated to: high-impact-librarianship.md
+    Date: 2021-04-13, Presenters: Gayle R. Schaub, Hazel A. McClure, Doug Worsham, Katie Greer
+
+Processing: 2021-05-21-Same-But-Different.md
+  ✓ Migrated to: Same-But-Different.md
+    Date: 2021-05-21, Presenters: Nisha Mody, M. Wynn Tranfield, Doug Worsham
+
+Processing: presentations-in-md.md
+  ✗ ERROR: Could not parse front-matter
+
+==================================================
+Migration Summary
+==================================================
+Total files: 45
+Successful: 44
+Failed: 1
+
+Completed at: 2026-02-16 18:02:35 -0800
+
+WARNING: Some files failed to migrate. Check log above for details.
