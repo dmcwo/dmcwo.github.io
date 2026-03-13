@@ -26,7 +26,11 @@ banner_alt: ''
 subtitle: ''
 recording_url: ''
 ---
-### Twitter Feedback
+## Slides
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRyhJY-97AaTEczmxYJVAcb5n-dTxFHV3goamL5GdcdE7KWg_eIXaBBQQj3XJUnhvyuYwoV_xuv4Fn4/pubembed?start=false&loop=false&delayms=5000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+## Twitter Feedback
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks <a href="https://twitter.com/nope4evr">@nope4evr</a> and friends for a thoughtful and challenging session on learning theories and approaches to instruction <a href="https://twitter.com/hashtag/liw16?src=hash">#liw16</a></p>&mdash; Kelly Durkin Ruth (@kellymdurk) <a href="https://twitter.com/kellymdurk/status/741304704890601472">June 10, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
