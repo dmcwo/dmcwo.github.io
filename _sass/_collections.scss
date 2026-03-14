@@ -131,25 +131,11 @@
   padding: $space-5;
   background-color: var(--color-bg-alt);
   border-radius: 4px;
-
-  // Mobile: stacked label-above-value
   display: block;
 
-  // Small+: side-by-side label | value grid
-  @media (min-width: $bp-sm) {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: $space-2 $space-5;
-    align-items: baseline;
-  }
-
-  // Spacing between groups when stacked (mobile only)
+  // Spacing between label/value groups
   dd + dt {
     margin-top: $space-4;
-
-    @media (min-width: $bp-sm) {
-      margin-top: 0; // grid row gap handles spacing
-    }
   }
 }
 
@@ -163,16 +149,12 @@
 }
 
 .project-meta__value {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
   margin: 0;
   margin-left: 0; // reset <dd> default browser indent
   margin-top: $space-1; // breathing room between label and value when stacked
-
-  @media (min-width: $bp-sm) {
-    margin-top: 0; // grid baseline alignment handles this
-  }
 }
 
 .collection-detail__body {
