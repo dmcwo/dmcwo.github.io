@@ -3,7 +3,7 @@ featured: true
 title: WI+RE (Writing Instruction + Research Education)
 subtitle: A learner-led instructional design community at UCLA, co-created with student designers to produce open educational resources at scale.
 icon: mouse-pointer-click
-category: "learning-design"
+category: "organizational-design"
 institution: "UCLA Library"
 collaborators: "Co-Founder Renee Romero and the WI+RE Creative Team"
 project_url: "https://uclalibrary.github.io/research-tips/"
