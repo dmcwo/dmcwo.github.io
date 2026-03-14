@@ -149,7 +149,7 @@
 }
 
 .project-meta__value {
-  font-size: 1rem;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); // matches .prose body text
   line-height: 1.6;
   color: var(--color-text);
   margin: 0;
